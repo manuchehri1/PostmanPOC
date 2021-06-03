@@ -1,0 +1,15 @@
+{
+    "runs":[
+        {
+            "collection": "./collections/GitHubJobAPI.postman_collection.json"
+        },
+        {
+            "collection": "./collections/ReqResAPI.postman_collection.json"
+        },
+        {
+            "collection": "./collections/MySchool.postman_collection.json",
+            "environment": "./collections/PRESCHOOL.postman_environment.json"
+        }
+
+    ]
+}

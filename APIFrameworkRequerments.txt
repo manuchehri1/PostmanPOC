@@ -1,0 +1,22 @@
+PostmanNewman POC
+Ta Create a API Testing Framework using Postman and Newman
+
+Requirements:
+
+0) GET/POST/PUT/DELETE methods .... Done
+1) Response Code Validation .... Done/Easy
+2) Key Properties Validation ....Done/Easy
+3) Capable of large batch of APIs... Done
+4) CI/CD AWS CodePipeline Integration .... In Progress
+5) Sending multiple requests within one REQUEST ... Done/Using Pre-Request
+  This is to handle authentication and in some case we need some data from
+  one request to put it into other request but it should be inside one Request
+6) Generating a good/detailed report .... Partially Done/Using htmlextra
+    but how to insert the QA owner to the report is NOT DONE yet
+7) Data Driven Testing .... Done/ Postman has it by default
+8) Running the framework in CI/CD pipline
+    --> Running all collection and generating one report for all of the collections  .... In Progress
+    --> Running one folder from all collections like only smoke tests(P0) from each feature(collection) .... In Progress
+    --> Running one feature(collection) with one environment(e.g QA env) ....Done/ Easy, newman run nameOfCollection.json -e QA_env.json
+    --> Running one folder from a collection with one .... Done/Easy, newman run nameOfCollection.json --folder nameOfFolder -e QA_env.json
+    --> Assigning the QA owner to the report ... In Progress

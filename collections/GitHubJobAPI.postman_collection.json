@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "ca0933e6-6ae5-43dd-ac40-55fde8b8df94",
+		"name": "GitHubJobAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "ListOfPositions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"let urlVar = pm.variables.get(\"URI\");",
+									"let stateVal = pm.variables.get(\"states\");",
+									"let langVal = pm.variables.get(\"languages\");",
+									"",
+									"",
+									"",
+									"console.log(\"THIS IS our uri: \"+urlVar);",
+									"console.log(\"This is state of \"+stateVal+\" and looking for \"+langVal+\" developer\");",
+									"",
+									"// pm.globals.get()",
+									"//pm.environment.get()"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/positions.json/?description={{languages}}&location={{states}}&full_time=true&page=1",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"",
+								"positions.json",
+								""
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "{{languages}}"
+								},
+								{
+									"key": "location",
+									"value": "{{states}}"
+								},
+								{
+									"key": "lat",
+									"value": "40.712776",
+									"disabled": true
+								},
+								{
+									"key": "long",
+									"value": "-74.005974",
+									"disabled": true
+								},
+								{
+									"key": "full_time",
+									"value": "true"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SinglePosition",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check if the company name is AdAction\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.company).to.eql(\"AdAction\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URI}}/positions/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"",
+								"positions",
+								":id"
+							],
+							"query": [
+								{
+									"key": "markdown",
+									"value": "true",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "75b9f02d-d324-4874-8e73-72781e4e9f96",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListOfPositionsNoJSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URI}}/positions/?description=java&full_time=true&location=new+york",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"",
+								"positions",
+								""
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "java"
+								},
+								{
+									"key": "lat",
+									"value": "40.712776",
+									"disabled": true
+								},
+								{
+									"key": "long",
+									"value": "-74.005974",
+									"disabled": true
+								},
+								{
+									"key": "full_time",
+									"value": "true"
+								},
+								{
+									"key": "location",
+									"value": "new+york"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SinglePositionNoJSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URI}}/positions/:id",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"",
+								"positions",
+								":id"
+							],
+							"query": [
+								{
+									"key": "markdown",
+									"value": "true",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "75b9f02d-d324-4874-8e73-72781e4e9f96",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SinglePosition.JSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URI}}//positions/75b9f02d-d324-4874-8e73-72781e4e9f96.json",
+							"host": [
+								"{{URI}}"
+							],
+							"path": [
+								"",
+								"positions",
+								"75b9f02d-d324-4874-8e73-72781e4e9f96.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "CreateUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Body id value is not null\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).not.null;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ali\",\n    \"job\": \"QA\"\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URI",
+			"value": "https://jobs.github.com"
+		},
+		{
+			"key": "states",
+			"value": ""
+		},
+		{
+			"key": "languages",
+			"value": ""
+		}
+	]
+}
